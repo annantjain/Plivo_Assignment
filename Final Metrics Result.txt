@@ -1,0 +1,90 @@
+Baselines:
+
+Train a baseline DistilBERT token classifier
+ 
+PS C:\Users\annan\Downloads\Plivo\pii_ner_assignment_IITB> python src/eval_span_f1.py --gold data/dev.jsonl --pred out/dev_pred.json
+Per-entity metrics:
+CITY            P=1.000 R=1.000 F1=1.000
+DATE            P=1.000 R=1.000 F1=1.000
+EMAIL           P=1.000 R=1.000 F1=1.000
+LOCATION        P=1.000 R=1.000 F1=1.000
+PERSON_NAME     P=1.000 R=1.000 F1=1.000
+PHONE           P=1.000 R=1.000 F1=1.000
+
+Macro-F1: 1.000
+
+PII-only metrics: P=1.000 R=1.000 F1=1.000
+Non-PII metrics: P=1.000 R=1.000 F1=1.000
+
+
+
+PS C:\Users\annan\Downloads\Plivo\pii_ner_assignment_IITB> python src/eval_span_f1.py --gold data/stress.jsonl --pred out/stress_pred.json 
+Per-entity metrics:
+CITY            P=1.000 R=1.000 F1=1.000
+CREDIT_CARD     P=0.000 R=0.000 F1=0.000
+DATE            P=1.000 R=1.000 F1=1.000
+EMAIL           P=0.000 R=0.000 F1=0.000
+PERSON_NAME     P=0.280 R=1.000 F1=0.437
+PHONE           P=0.356 R=0.900 F1=0.511
+
+Macro-F1: 0.491
+
+PII-only metrics: P=0.301 R=0.655 F1=0.413
+Non-PII metrics: P=0.588 R=1.000 F1=0.741
+
+After making our dataset largrer, my results are as follows:
+
+
+PS C:\Users\annan\Downloads\Plivo\pii_ner_assignment_IITB> python src/eval_span_f1.py --gold data/dev_final.jsonl --pred out2/dev_pred.json
+Per-entity metrics:
+CITY            P=1.000 R=1.000 F1=1.000
+CREDIT_CARD     P=1.000 R=1.000 F1=1.000
+DATE            P=1.000 R=1.000 F1=1.000
+EMAIL           P=1.000 R=1.000 F1=1.000
+LOCATION        P=1.000 R=1.000 F1=1.000
+PERSON_NAME     P=1.000 R=1.000 F1=1.000
+PHONE           P=1.000 R=1.000 F1=1.000
+
+Macro-F1: 1.000
+
+PII-only metrics: P=1.000 R=1.000 F1=1.000
+Non-PII metrics: P=1.000 R=1.000 F1=1.000
+
+
+
+ PS C:\Users\annan\Downloads\Plivo\pii_ner_assignment_IITB> python src/eval_span_f1.py --gold data/stress.jsonl --pred out2/stress_pred.json
+Per-entity metrics:
+CITY            P=1.000 R=1.000 F1=1.000
+CREDIT_CARD     P=0.444 R=0.500 F1=0.471
+DATE            P=0.816 R=1.000 F1=0.899
+EMAIL           P=0.675 R=0.675 F1=0.675
+PERSON_NAME     P=0.296 R=1.000 F1=0.457
+PHONE           P=0.432 R=0.950 F1=0.594
+
+Macro-F1: 0.683
+
+PII-only metrics: P=0.462 R=0.825 F1=0.592
+Non-PII metrics: P=0.625 R=1.000 F1=0.769
+
+
+After some pre-processing steps, the results on stress dataset is as follows:
+PS C:\Users\annan\Downloads\Plivo\pii_ner_assignment_IITB> python src/eval_span_f1.py --gold data/stress.jsonl --pred out2/stress_pred_pp.json
+>>
+Per-entity metrics:
+CITY            P=1.000 R=1.000 F1=1.000
+CREDIT_CARD     P=0.952 R=0.500 F1=0.656
+DATE            P=0.816 R=1.000 F1=0.899
+EMAIL           P=0.675 R=0.675 F1=0.675
+PERSON_NAME     P=0.303 R=1.000 F1=0.465
+PHONE           P=0.514 R=0.950 F1=0.667
+
+Macro-F1: 0.727
+
+PII-only metrics: P=0.522 R=0.825 F1=0.640
+Non-PII metrics: P=0.625 R=1.000 F1=0.769
+
+
+
+Latency over 50 runs (batch_size=1):
+  p50: 60.77 ms
+  p95: 74.92 ms
